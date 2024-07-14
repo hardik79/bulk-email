@@ -40,6 +40,21 @@
                         <span class="text-danger">{{ $errors->first('body') }}</span>
                     @endif
                 </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="toggleRepeat">
+                        <label class="form-check-label" for="toggleRepeat">
+                            Send multiple times
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group" id="repeatCountDiv" style="display: none;">
+                    <label for="repeatCount">Number of times to send:</label>
+                    <input type="number" class="form-control" id="repeatCount" name="repeatCount" min="1">
+                    @if ($errors->has('repeatCount'))
+                        <span class="text-danger">{{ $errors->first('repeatCount') }}</span>
+                    @endif
+                </div>
                 <button type="submit" class="btn btn-primary">Send Email</button>
             </form>
         </div>
@@ -57,6 +72,15 @@
             enforceWhitelist: false,
             dropdown: {
                 enabled: 1 // show suggestions after 1 typed character
+            }
+        });
+
+        $('#toggleRepeat').change(function() {
+            if ($(this).is(':checked')) {
+                $('#repeatCountDiv').show();
+            } else {
+                $('#repeatCountDiv').hide();
+                $('#repeatCount').val('');
             }
         });
     });

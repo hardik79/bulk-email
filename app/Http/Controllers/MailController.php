@@ -19,6 +19,7 @@ class MailController extends Controller
             'email' => 'required|string',
             'subject' => 'required|string',
             'body' => 'required|string',
+            'repeatCount' => 'nullable|integer|min:1'
         ]);
 
         $emailsJson = $request->input('email');
@@ -36,8 +37,12 @@ class MailController extends Controller
             'body' => $request->body
         ];
 
+        $repeatCount = $request->input('repeatCount') ? (int) $request->input('repeatCount') : 1;
+
         foreach ($emails as $email) {
-            Mail::to($email)->send(new SendMail($details));
+            for ($i = 0; $i < $repeatCount; $i++) {
+                Mail::to($email)->send(new SendMail($details));
+            }
         }
 
         return back()->with('success', 'Emails have been sent.');
