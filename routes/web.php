@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->to('/send-mail');
 });
 Route::get('send-mail', [MailController::class, 'showForm']);
 Route::post('send-mail', [MailController::class, 'sendMail']);
