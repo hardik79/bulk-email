@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,5 @@ Route::get('/', function () {
 });
 Route::get('send-mail', [MailController::class, 'showForm']);
 Route::post('send-mail', [MailController::class, 'sendMail']);
+Route::post('/save-credentials', [EmailController::class, 'saveCredentials']);
+Route::post('set-credentials', [MailController::class, 'setCredentials']);
