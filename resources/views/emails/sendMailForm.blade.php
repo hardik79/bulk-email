@@ -42,6 +42,19 @@
         .form-check-label {
             cursor: pointer;
         }
+
+        /* Custom CSS for Tagify input */
+        .tagify__input {
+            min-height: 38px;
+        }
+
+        .tagify {
+            width: 100%;
+            min-height: 38px;
+            max-height: 150px;
+            overflow-y: auto;
+            resize: vertical;
+        }
     </style>
 </head>
 
