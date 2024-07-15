@@ -84,9 +84,9 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="toggleRepeat">
-                                    <label class="form-check-label" for="toggleRepeat">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="toggleRepeat">
+                                    <label class="custom-control-label" for="toggleRepeat">
                                         Send multiple times
                                     </label>
                                 </div>
@@ -128,6 +128,10 @@
                     $('#repeatCount').val('');
                 }
             });
+
+            setTimeout(function() {
+                $(".alert-success").fadeOut("slow");
+            }, 5000);
         });
     </script>
 </body>
